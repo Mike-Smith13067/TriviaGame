@@ -1,131 +1,266 @@
 //                      Crystal Collector Game
 // Psuedocode
 //1. Assign/define variables.
-    //a. Crystal values.
-    var blueGemGame = 0;
-    var yellowGemGame = 0;
-    var whiteGemGame = 0;
-    var greenGemGame = 0;
-    var blueGem = 0;
-    var yellowGem = 0;
-    var whiteGem = 0;
-    var greenGem = 0;
-    var targetNumber = Math.floor(Math.random()*101) +19;
-    var playerWins = 0;
-    var playerLosses = 0;
+     var playerCorrect = 0;
+    var playerIncorrect = 0;
     var playerScore = 0;
-    
-    
-    //d. Target value to be guessed.
-        // Randomly generated between 19-120
-        // Resets to new value at game start
+    var count=30;
+     
+    //d. Timer countdown from 30 secs 
+    var counter = setInterval(timer, 1000);
+        function timer()
+         {
+            count=count-1;
+        if (count <=0) {
+            clearInterval(counter);
+            $(".lead").text("Time is up: " + count);
+            $(".score").text("Score (Correct/Incorrect): " + playerCorrect + "/" + playerIncorrect + "=" + playerScore + "%");
+        }
+        else {
+            $(".lead").text("Time Remaining: " + count);
+        }
+    }
 
-    var targetNumber = Math.floor(Math.random()*101) +19;
-    console.log (targetNumber);
-    $("#targetNumber").text(targetNumber);
-    $("#playerScore").text(playerScore);
-
-        //random values between 1-12.
-    
-        //New value assigned at game start.
-        //Value hidden until assigned crystal button is clicked.
-//      ***********************BLUE GEM***********************
-$("#blue-btn").on("click", function() {
-    if (blueGem == 0) {
-        blueGem = Math.floor(Math.random()*11) + 1;
-        $ ("#card-text-blue").text ("Current Value: " + blueGem);}
+//      ***********************Question 1***********************
+$(".btn1").on("click", function() {
+        var btn1 = $(this).attr("value");
+        console.log (btn1);
+    if (btn1 === "false") {
+        playerCorrect++
+        playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+        console.log (playerCorrect);
+        console.log (playerIncorrect);         
+        console.log (playerScore);
+        
+    }
+        
     else {
-        blueGemGame += blueGem;
-        console.log (blueGemGame + "bg");
+        playerIncorrect++
+        console.log (playerCorrect);
+        console.log (playerIncorrect);
     
-         playerScore = blueGemGame + yellowGemGame + whiteGemGame + greenGemGame;
-        $("#playerScore").text(playerScore);
-    console.log (playerScore); 
-    gameOver ();
+        playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+         console.log (playerScore); 
     }
            
 })
-//      **********************YELLOW GEM**********************
-
-$("#yellow-btn").on("click", function() {
-    if (yellowGem == 0) {
-        yellowGem = Math.floor(Math.random()*11) + 1;
-        $ ("#card-text-yellow").text ("Current Value: " + yellowGem);}
-        else {
-            yellowGemGame += yellowGem;
-            console.log (yellowGemGame + "yg");}
-        
-         playerScore = blueGemGame + yellowGemGame + whiteGemGame + greenGemGame;
-        $ ("#playerScore").text(playerScore);
-        console.log (playerScore);
-
-        gameOver();
-
-          
-    })
-//      *********************WHITE GEM*****************************
-$("#white-btn").on("click", function() {
-    if (whiteGem == 0) {
-        whiteGem = Math.floor(Math.random()*11) + 1;
-        $ ("#card-text-white").text ("Current Value: " + whiteGem);}
-    else {
-        whiteGemGame += whiteGem;}
- 
-     playerScore = blueGemGame + yellowGemGame + whiteGemGame + greenGemGame;
-    $ ("#playerScore").text(playerScore);
+//      ***********************Question 2***********************
+$(".btn2").on("click", function() {
+    var btn2 = $(this).attr("value");
+    console.log (btn2);
+if (btn2 === "true") {
+    playerCorrect++
+    playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+    console.log (playerCorrect);
+    console.log (playerIncorrect);         
     console.log (playerScore);
-
-    gameOver();
     
-
+}
     
-})
-//******************************GREEN GEM***************************
-$("#green-btn").on("click", function() {
-    if (greenGem == 0) {
-        greenGem = Math.floor(Math.random()*11) + 1;
-        $ ("#card-text-green").text ("Current Value: " + greenGem);}
-    else {
-        greenGemGame += greenGem;}
- 
-     playerScore = blueGemGame + yellowGemGame + whiteGemGame + greenGemGame;
-    $ ("#playerScore").text(playerScore);
-    console.log (playerScore);
+else {
+    playerIncorrect++
+    console.log (playerCorrect);
+    console.log (playerIncorrect);
 
-    gameOver ();
-   
-   
+    playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+     console.log (playerScore); 
+}
+       
 })
 
-function gameOver () {
-    if (playerScore == targetNumber) {
-        $("#playerScore").text(playerScore);
-            alert("You win!! Player score equals target value. ");
-            playerWins++;
-            $ ("#playerWins").text("Player Wins: " + playerWins);
-
-        reset();}
+//      ***********************Question 1***********************
+$(".btn3").on("click", function() {
+    var btn3 = $(this).attr("value");
+    console.log (btn3);
+if (btn3 === "true") {
+    playerCorrect++
+    playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+    console.log (playerCorrect);
+    console.log (playerIncorrect);         
+    console.log (playerScore);
     
-    if (playerScore > targetNumber) {
-        $ ("#playerScore").text(playerScore);
-            alert("You Lose! Player score exceeded target value.");
-            playerLosses++;
-            $("#playerLosses").text("Player Losses: " + playerLosses);
-        
-        reset();}
-    }
+}
+    
+else {
+    playerIncorrect++
+    console.log (playerCorrect);
+    console.log (playerIncorrect);
+
+    playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+     console.log (playerScore); 
+}
+       
+})
+
+//      ***********************Question 4***********************
+$(".btn4").on("click", function() {
+    var btn4 = $(this).attr("value");
+    console.log (btn4);
+if (btn4 === "false") {
+    playerCorrect++
+    playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+    console.log (playerCorrect);
+    console.log (playerIncorrect);         
+    console.log (playerScore);
+    
+}
+    
+else {
+    playerIncorrect++
+    console.log (playerCorrect);
+    console.log (playerIncorrect);
+
+    playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+     console.log (playerScore); 
+}
+       
+})
+
+//      ***********************Question 5***********************
+$(".btn5").on("click", function() {
+    var btn5 = $(this).attr("value");
+    console.log (btn5);
+if (btn5 === "true") {
+    playerCorrect++
+    playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+    console.log (playerCorrect);
+    console.log (playerIncorrect);         
+    console.log (playerScore);
+    
+}
+    
+else {
+    playerIncorrect++
+    console.log (playerCorrect);
+    console.log (playerIncorrect);
+
+    playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+     console.log (playerScore); 
+}
+       
+})
+
+//      ***********************Question 1***********************
+$(".btn6").on("click", function() {
+    var btn6 = $(this).attr("value");
+    console.log (btn6);
+if (btn6 === "true") {
+    playerCorrect++
+    playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+    console.log (playerCorrect);
+    console.log (playerIncorrect);         
+    console.log (playerScore);
+    
+}
+    
+else {
+    playerIncorrect++
+    console.log (playerCorrect);
+    console.log (playerIncorrect);
+
+    playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+     console.log (playerScore); 
+}
+       
+})
+
+//      ***********************Question 7***********************
+$(".btn7").on("click", function() {
+    var btn7 = $(this).attr("value");
+    console.log (btn7);
+if (btn7 === "false") {
+    playerCorrect++
+    playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+    console.log (playerCorrect);
+    console.log (playerIncorrect);         
+    console.log (playerScore);
+    
+}
+    
+else {
+    playerIncorrect++
+    console.log (playerCorrect);
+    console.log (playerIncorrect);
+
+    playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+     console.log (playerScore); 
+}
+
+//      ***********************Question 8***********************
+$(".btn8").on("click", function() {
+    var btn8 = $(this).attr("value");
+    console.log (btn8);
+if (btn8 === "true") {
+    playerCorrect++
+    playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+    console.log (playerCorrect);
+    console.log (playerIncorrect);         
+    console.log (playerScore);
+    
+}
+    
+else {
+    playerIncorrect++
+    console.log (playerCorrect);
+    console.log (playerIncorrect);
+
+    playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+     console.log (playerScore); 
+}
+       
+})
+
+//      ***********************Question 9***********************
+$(".btn9").on("click", function() {
+    var btn9 = $(this).attr("value");
+    console.log (btn9);
+if (btn9 === "true") {
+    playerCorrect++
+    playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+    console.log (playerCorrect);
+    console.log (playerIncorrect);         
+    console.log (playerScore);
+    
+}
+    
+else {
+    playerIncorrect++
+    console.log (playerCorrect);
+    console.log (playerIncorrect);
+
+    playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+     console.log (playerScore); 
+}
+       
+})
+
+//      ***********************Question 10***********************
+$(".btn10").on("click", function() {
+    var btn10 = $(this).attr("value");
+    console.log (btn10);
+if (btn10 === "true") {
+    playerCorrect++
+    playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+    console.log (playerCorrect);
+    console.log (playerIncorrect);         
+    console.log (playerScore);
+    
+}
+    
+else {
+    playerIncorrect++
+    console.log (playerCorrect);
+    console.log (playerIncorrect);
+
+     playerScore = ((playerCorrect / (playerCorrect + playerIncorrect)) *100);
+     console.log (playerScore); 
+}
+       
+})
+       
+})
 
 function reset() {
-     blueGemGame = 0;
-     yellowGemGame = 0;
-     whiteGemGame = 0;
-     greenGemGame = 0;
-     blueGem = 0;
-     yellowGem = 0;
-     whiteGem = 0;
-     greenGem = 0;
-     targetNumber = Math.floor(Math.random()*101) +19;
-     $("#targetNumber").text(targetNumber);
      playerScore = 0;
     $("#playerScore").text(playerScore);}
 

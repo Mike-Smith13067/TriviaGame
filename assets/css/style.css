@@ -1,10 +1,21 @@
 .gameheader {
-    text-align: center;
+    text-align: center;    
+}
+.display-4 {
+    background-color: lightgreen;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
 }
 .questions {
-    font-size: 20px;
-    color:red;
+    font-size: 21px;
+    color: red;    
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: lightgreen;
+}
+.score {
+    background-color: lightgreen;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
 }
 
 
